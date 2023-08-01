@@ -1,23 +1,23 @@
-import logo from './logo.svg';
+import Navbar from './components/Navbar';
+import SearchBar from './components/SearchBar';
+import Table from './components/Table'
+import Ratings from './components/Ratings'
+import Profile from './components/Profile'
 import './App.css';
+import {useState} from 'react';
 
 function App() {
+const [rating, setRating] = useState(800);
+const [validUser, setValidUser] = useState(0);
+const [user, setUser] = useState({});
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+        <Navbar></Navbar>
+        <SearchBar validUser = {validUser} setValidUser = {setValidUser} user = {user} setUser = {setUser}></SearchBar>
+        <Profile validUser = {validUser} setValidUser = {setValidUser} user = {user} setUser = {setUser}></Profile>
+        <Ratings rating = {rating} setRating = {setRating}></Ratings>
+        <Table user = {user} rating = {rating} validUser = {validUser}></Table>
     </div>
   );
 }

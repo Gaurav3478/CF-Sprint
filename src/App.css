@@ -1,38 +1,53 @@
-.App {
-  text-align: center;
+body {
+    background-color: #A9A9A9;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.mySearchBar {
+    margin-top: 40px;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+.myTable {
+    margin-top: 40px;
+}
+
+.myRatings {
+    margin-top: 40px;
+    display: flex;
+    justify-content: center;
+}
+
+.myRatings button {
+    margin-right: 10px;
+}
+
+.myProfile {
+    margin-top: 20px;
+    justify-content: center;
   }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+  
+  .error-message {
+    color: #ff4d4d;
+    font-weight: bold;
   }
-  to {
-    transform: rotate(360deg);
+  
+  .error-box {
+    max-width: 300px;
+    /* Add any other styles you want for the error box */
   }
-}
+  
+  .myProfile img {
+    margin-left: 5px;
+  }
+
+  #showProfileID {
+    white-space: nowrap;
+  }
+
+  .table-container {
+    width: 100%;
+    table-layout: fixed;
+  }
+  
+  .table-cell {
+    width: 20%; /* Divide the table into 5 equal-width columns */
+  }
