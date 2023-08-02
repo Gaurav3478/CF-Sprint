@@ -10,11 +10,6 @@ function Table(props) {
     const solveCounts = {};
 
     useEffect(() => {
-        // Update the state with the new submissions list when it changes
-        setSubmissions(submissions);
-      }, [submissions]);
-
-    useEffect(() => {
         setSubmissions({});
         if(props.validUser === 2) {
             const url = url_submissions + props.user.handle;
@@ -24,10 +19,8 @@ function Table(props) {
                 const submissionsList = data.result;
                 submissionsList.forEach((submission) => {
                     if(submission.verdict == "OK") {
-                        if(!submissions[submission.problem.contestId]) {
-                            submissions[submission.problem.contestId] = {};
-                        }
-                        submissions[submission.problem.contestId][submission.problem.index] = true;
+                        var str = submission.problem.contestId + '-' + submission.problem.index;
+                        submissions[str] = true;
                     }
                 });
             })
@@ -106,14 +99,11 @@ function Table(props) {
           <tbody>   
           {getTopProblems(props.rating).map((problem, index) => (
                 <tr key={index} className={
-                    !submissions.hasOwnProperty(problem.problem.contestId) ||
-                    !submissions[problem.problem.contestId].hasOwnProperty(
-                      problem.problem.index
-                    )
+                    !submissions[`${problem.problem.contestId}-${problem.problem.index}`]
                       ? ''
                       : 'bg-success'
                   }>
-                  {/* <tr key = {index} className={props.user.handle === 'Gaurav3478' ? `bg-success` : ``}> */}
+                  {/* <tr key = {index} className={props.user.handle === 'Gaurav3478' && problem.problem.array_index % 2 ? `bg-success` : ``}> */}
                   <td>{problem.problem.array_index}</td>
                   <td>{problem.problem.name}</td>
                   <td>{problem.problem.solveCount}</td>
