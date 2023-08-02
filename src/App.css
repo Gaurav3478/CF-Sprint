@@ -1,5 +1,7 @@
 body {
-    background-color: #A9A9A9;
+    /* background-color: #1A202C; */
+    /* background-color: #221d27; */
+    background-color: #001219;
 }
 
 .mySearchBar {
@@ -71,3 +73,32 @@ body {
   ::-webkit-scrollbar-thumb:hover {
     background: #555;
   }
+
+  .myAbout {
+    max-width: 600px;
+    margin: auto;
+    padding: 20px;
+    text-align: center;
+    font-size: 18px;
+    line-height: 1.6;
+    color: lightsteelblue;
+  }
+
+  .myAbout h2 {
+    margin-bottom: 20px;
+    color: darkgoldenrod;
+  }
+
+  .myAbout img {
+    display: block; /* Set the image to a block element to remove any default margins */
+    max-width: 50%; /* Set the maximum width of the image to fit within its container */
+    height: auto; /* Allow the image height to scale proportionally with the width */
+    margin: 20px auto; /* Add some margin at the top and bottom to center the image */
+    border-radius: 50%;
+  }
+
+  .myUpdate {
+    margin-top: 20px;
+  }
+
+ 

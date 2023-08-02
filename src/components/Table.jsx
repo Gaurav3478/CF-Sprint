@@ -9,6 +9,12 @@ function Table(props) {
     const [submissions, setSubmissions] = useState({});
     const solveCounts = {};
 
+    const [updateTable, setUpdateTable] = useState(false);
+
+    const handleUpdateTable = () => {
+        setUpdateTable(!updateTable); // Toggle the state to trigger re-render
+      };
+
     useEffect(() => {
 
     }, [submissions]);
@@ -31,7 +37,7 @@ function Table(props) {
                 setSubmissions(new_submissions);
             })
         } 
-    }, [props.user, props.validUser])
+    }, [props.user, props.validUser, updateTable])
 
 
   useEffect(() => {
@@ -95,6 +101,10 @@ function Table(props) {
     };
 
     return (
+        <div>
+            <div className='text-center'>
+                <button   button type="button" className = "btn btn-info text-center myUpdate" onClick={handleUpdateTable}>Update Table</button>
+            </div>
         <table className='table table-dark myTable table-container'>
           <thead>
             <tr>
@@ -130,6 +140,8 @@ function Table(props) {
               ))}
           </tbody>
         </table>
+        </div>
+
       );
 };
     
