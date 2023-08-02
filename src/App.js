@@ -24,16 +24,15 @@ const [user, setUser] = useState({});
     <div>
         <Navbar></Navbar>
         <Switch>
-            <Route path = "/CF-Sprint/home">
+            <Route exact path = "/">
                 <SearchBar validUser = {validUser} setValidUser = {setValidUser} user = {user} setUser = {setUser}></SearchBar>
                 <Profile validUser = {validUser} setValidUser = {setValidUser} user = {user} setUser = {setUser}></Profile>
                 <Ratings rating = {rating} setRating = {setRating}></Ratings>
                 <Table user = {user} rating = {rating} setRating = {setRating} validUser = {validUser}></Table>
             </Route>
-            <Route path="/CF-Sprint/about">
-                <About></About>
+            <Route exact path="/about">
+                <About/>
             </Route>
-            <Redirect to="/CF-Sprint/home"/> 
         </Switch>
     </div>
     </Router>

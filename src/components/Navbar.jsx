@@ -22,10 +22,10 @@ function Navbar() {
       <div className="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
         <ul className="navbar-nav">
           <li className="nav-item">
-            <Link to = "/CF-Sprint/home" className={`nav-link   ${activeLink === 'home' ? `active` : ``}`} onClick={() => handleLinkClick('home')}>Home</Link>
+            <Link to = "/" className={`nav-link   ${activeLink === '' ? `active` : ``}`} onClick={() => handleLinkClick('')}>Home</Link>
           </li>
           <li className="nav-item">
-            <Link to = "/CF-Sprint/about" className={`nav-link   ${activeLink === 'about' ? `active` : ``}`} onClick={() => handleLinkClick('about')}>About</Link>
+            <Link to = "/about" className={`nav-link   ${activeLink === 'about' ? `active` : ``}`} onClick={() => handleLinkClick('about')}>About</Link>
           </li>
         </ul>
       </div>
