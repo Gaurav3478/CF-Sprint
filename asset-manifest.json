@@ -1,0 +1,16 @@
+{
+  "files": {
+    "main.css": "/CF-Sprint/static/css/main.2d84a3d1.css",
+    "main.js": "/CF-Sprint/static/js/main.27ae3adf.js",
+    "static/js/787.21889853.chunk.js": "/CF-Sprint/static/js/787.21889853.chunk.js",
+    "static/media/US soft.jpg": "/CF-Sprint/static/media/US soft.60f4f209996f695baab4.jpg",
+    "index.html": "/CF-Sprint/index.html",
+    "main.2d84a3d1.css.map": "/CF-Sprint/static/css/main.2d84a3d1.css.map",
+    "main.27ae3adf.js.map": "/CF-Sprint/static/js/main.27ae3adf.js.map",
+    "787.21889853.chunk.js.map": "/CF-Sprint/static/js/787.21889853.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.2d84a3d1.css",
+    "static/js/main.27ae3adf.js"
+  ]
+}
