@@ -10,8 +10,13 @@ function Table(props) {
     const solveCounts = {};
 
     useEffect(() => {
+
+    }, [submissions]);
+
+    useEffect(() => {
         setSubmissions({});
         if(props.validUser === 2) {
+            const new_submissions = {};
             const url = url_submissions + props.user.handle;
             fetch(url)
             .then((response) => response.json())
@@ -20,11 +25,11 @@ function Table(props) {
                 submissionsList.forEach((submission) => {
                     if(submission.verdict == "OK") {
                         var str = submission.problem.contestId + '-' + submission.problem.index;
-                        submissions[str] = true;
+                        new_submissions[str] = true;
                     }
                 });
+                setSubmissions(new_submissions);
             })
-            console.log(submissions);
         } 
     }, [props.user])
 
@@ -44,33 +49,32 @@ function Table(props) {
           });
 
           const problems = data.result.problems;
-          const problemsByRating = {};
+          const new_problemsByRating = {};
 
           // Group problems by rating
           problems.forEach((problem) => {
             const rating = problem.rating || 'Unrated'; // Use 'Unrated' if no rating is available
             const contestId = problem.contestId;
             const index = problem.index;
-            if (!problemsByRating[rating]) {
-              problemsByRating[rating] = [];
+            if (!new_problemsByRating[rating]) {
+              new_problemsByRating[rating] = [];
             }
             problem.solveCount = solveCounts[contestId][index];
-            problemsByRating[rating].push({problem});
+            new_problemsByRating[rating].push({problem});
           });
 
-          setProblemsByRating(problemsByRating);
-          for(const rating in problemsByRating) {
-            problemsByRating[rating].sort((a, b) => b.problem.solveCount - a.problem.solveCount);
-            problemsByRating[rating] = problemsByRating[rating].slice(0, NUMBER_OF_PROBLEMS);
+          for(const rating in new_problemsByRating) {
+            new_problemsByRating[rating].sort((a, b) => b.problem.solveCount - a.problem.solveCount);
+            new_problemsByRating[rating] = new_problemsByRating[rating].slice(0, NUMBER_OF_PROBLEMS);
           }
 
-          for(const rating in problemsByRating) {
+          for(const rating in new_problemsByRating) {
             for(let i = 1; i <= NUMBER_OF_PROBLEMS; i++) {
-                problemsByRating[rating][i - 1].problem.array_index = i;
+                new_problemsByRating[rating][i - 1].problem.array_index = i;
             }
           }
 
-          console.log(problemsByRating);
+          setProblemsByRating(new_problemsByRating);
         }
       })
       .catch((error) => {
@@ -83,6 +87,11 @@ function Table(props) {
             return []
         };
         return problemsByRating[rating];
+    };
+
+    const navigateToProblem = (contestId, index) => {
+        const url = `https://codeforces.com/problemset/problem/${contestId}/${index}`;
+        window.open(url, '_blank');
     };
 
     return (
@@ -98,12 +107,13 @@ function Table(props) {
           </thead>
           <tbody>   
           {getTopProblems(props.rating).map((problem, index) => (
-                <tr key={index} className={
-                    !submissions[`${problem.problem.contestId}-${problem.problem.index}`]
-                      ? ''
-                      : 'bg-success'
-                  }>
-                  {/* <tr key = {index} className={props.user.handle === 'Gaurav3478' && problem.problem.array_index % 2 ? `bg-success` : ``}> */}
+                <tr key={index} className={(() => {
+                    const hasClass = !submissions[`${problem.problem.contestId}-${problem.problem.index}`];
+                    return hasClass ? '' : 'bg-success';
+                  })()
+                  }
+                  onClick={() => navigateToProblem(problem.problem.contestId, problem.problem.index)}
+                  style={{ cursor: 'pointer' }}>
                   <td>{problem.problem.array_index}</td>
                   <td>{problem.problem.name}</td>
                   <td>{problem.problem.solveCount}</td>

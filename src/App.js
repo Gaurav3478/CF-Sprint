@@ -17,7 +17,7 @@ const [user, setUser] = useState({});
         <SearchBar validUser = {validUser} setValidUser = {setValidUser} user = {user} setUser = {setUser}></SearchBar>
         <Profile validUser = {validUser} setValidUser = {setValidUser} user = {user} setUser = {setUser}></Profile>
         <Ratings rating = {rating} setRating = {setRating}></Ratings>
-        <Table user = {user} rating = {rating} validUser = {validUser}></Table>
+        <Table user = {user} rating = {rating} setRating = {setRating} validUser = {validUser}></Table>
     </div>
   );
 }
