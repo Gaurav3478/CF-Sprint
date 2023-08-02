@@ -30,7 +30,7 @@ function SearchBar(props) {
   return (
     <div className = "mySearchBar d-flex justify-content-center">
         <form className="form-inline my-2 my-lg-0" onSubmit={handleSubmit}>
-      <input className="form-control mr-sm-2" type="search" placeholder="Codeforces ID" aria-label="Search" onChange={handleOnChange}/>
+      <input className="form-control mr-sm-2" type="search" placeholder="Codeforces Handle" aria-label="Search" onChange={handleOnChange}/>
       <button className="btn btn-outline-primary my-2 my-sm-0" type="submit" onSubmit={handleSubmit}>Search</button>
     </form>
     </div>

@@ -23,7 +23,7 @@ function Table(props) {
             .then((data) => {
                 const submissionsList = data.result;
                 submissionsList.forEach((submission) => {
-                    if(submission.verdict == "OK") {
+                    if(submission.verdict === "OK") {
                         var str = submission.problem.contestId + '-' + submission.problem.index;
                         new_submissions[str] = true;
                     }
@@ -31,7 +31,7 @@ function Table(props) {
                 setSubmissions(new_submissions);
             })
         } 
-    }, [props.user])
+    }, [props.user, props.validUser])
 
 
   useEffect(() => {
